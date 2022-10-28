@@ -428,6 +428,39 @@ else ()
     add_custom_target(${PROJECT}-headers-check)
 endif ()
 
+
+# skip unity build for files, which currently cause problems when turning on CMake untiy build
+set_source_files_properties(
+    src/OpenLoco/Config.cpp
+    src/OpenLoco/GameCommands/Cheat.cpp
+    src/OpenLoco/GameCommands/GameCommands.cpp
+    src/OpenLoco/Input/Keyboard.cpp
+    src/OpenLoco/Input/MouseInput.cpp
+    src/OpenLoco/Map/MapGenerator.cpp
+    src/OpenLoco/Map/Tile.cpp
+    src/OpenLoco/Objects/ObjectIndex.cpp
+    src/OpenLoco/Objects/ObjectManager.cpp
+    src/OpenLoco/Vehicles/Vehicle1.cpp
+    src/OpenLoco/Vehicles/Vehicle2.cpp
+    src/OpenLoco/Vehicles/VehicleBody.cpp
+    src/OpenLoco/Vehicles/VehicleBogie.cpp
+    src/OpenLoco/Vehicles/VehicleHead.cpp
+    src/OpenLoco/Vehicles/VehicleTail.cpp
+    src/OpenLoco/Windows/Cheats.cpp
+    src/OpenLoco/Windows/CompanyList.cpp
+    src/OpenLoco/Windows/CompanyWindow.cpp
+    src/OpenLoco/Windows/Construction/Common.cpp
+    src/OpenLoco/Windows/IndustryList.cpp
+    src/OpenLoco/Windows/IndustryWindow.cpp
+    src/OpenLoco/Windows/MessageWindow.cpp
+    src/OpenLoco/Windows/News/Common.cpp
+    src/OpenLoco/Windows/StationWindow.cpp
+    src/OpenLoco/Windows/TerraForm.cpp
+    src/OpenLoco/Windows/TownList.cpp
+    src/OpenLoco/Windows/TownWindow.cpp
+    src/OpenLoco/Windows/Vehicle.cpp
+  PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
+
 install(TARGETS "openloco"
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
     BUNDLE DESTINATION "${CMAKE_INSTALL_BINDIR}")
